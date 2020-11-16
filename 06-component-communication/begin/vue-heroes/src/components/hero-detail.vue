@@ -8,22 +8,30 @@
         <div class="content">
           <div class="field">
             <label class="label" for="id">id</label>
-            <label class="input" name="id" readonly>{{ hero.id }}</label>
+            <label class="input" name="id" readonly>{{ clonedHero.id }}</label>
           </div>
           <div class="field">
             <label class="label" for="firstName">first name</label>
-            <input class="input" name="firstName" v-model="hero.firstName" />
+            <input
+              class="input"
+              name="firstName"
+              v-model="clonedHero.firstName"
+            />
           </div>
           <div class="field">
             <label class="label" for="lastName">last name</label>
-            <input class="input" name="lastName" v-model="hero.lastName" />
+            <input
+              class="input"
+              name="lastName"
+              v-model="clonedHero.lastName"
+            />
           </div>
           <div class="field">
             <label class="label" for="description">description</label>
             <input
               class="input"
               name="description"
-              v-model="hero.description"
+              v-model="clonedHero.description"
             />
           </div>
           <div class="field">
@@ -32,11 +40,11 @@
               type="date"
               class="input"
               id="originDate"
-              v-model="hero.originDate"
+              v-model="clonedHero.originDate"
             />
             <p class="comment">
               My origin story began on
-              {{ hero.originDate | shortDate }}
+              {{ clonedHero.originDate | shortDate }}
             </p>
           </div>
           <div class="field">
@@ -45,7 +53,7 @@
               class="input"
               name="capeCounter"
               type="number"
-              v-model="hero.capeCounter"
+              v-model="clonedHero.capeCounter"
             />
           </div>
           <div class="field">
@@ -84,9 +92,16 @@ export default {
       default: () => {},
     },
   },
+  data() {
+    return {
+      clonedHero: { ...this.hero },
+    };
+  },
   computed: {
     fullName() {
-      return this.hero ? `${this.hero.firstName} ${this.hero.lastName}` : '';
+      return this.clonedHero
+        ? `${this.clonedHero.firstName} ${this.clonedHero.lastName}`
+        : '';
     },
   },
   methods: {
@@ -115,7 +130,7 @@ export default {
     },
   },
   watch: {
-    'hero.capeCounter': {
+    'clonedHero.capeCounter': {
       immediate: true,
       handler(newValue, oldValue) {
         console.log(
