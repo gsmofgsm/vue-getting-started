@@ -61,7 +61,10 @@
                   />
                   green
                 </label>
-                <div class="color-line"></div>
+                <div
+                  class="color-line"
+                  :style="{ 'background-color': hero.capeColor }"
+                ></div>
               </div>
               <div class="field">
                 <label for="power">
