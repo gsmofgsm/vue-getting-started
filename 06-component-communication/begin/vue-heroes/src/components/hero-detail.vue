@@ -106,10 +106,10 @@ export default {
   },
   methods: {
     cancelHero() {
-      // placeholder
+      this.$emit('cancel');
     },
     saveHero() {
-      // placeholder
+      this.$emit('save', this.clonedHero);
     },
     handleTheCapes(newValue) {
       const value = parseInt(newValue, 10);
