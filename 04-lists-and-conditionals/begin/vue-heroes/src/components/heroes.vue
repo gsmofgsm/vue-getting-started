@@ -20,7 +20,7 @@
         </ul>
       </div>
     </div>
-    <div class="columns">
+    <div class="columns" v-if="selectedHero">
       <div class="column is-3">
         <header class="card-header">
           <p class="card-header-title">{{ selectedHero.firstName }}</p>
@@ -69,12 +69,7 @@ export default {
   name: 'Heroes',
   data() {
     return {
-      selectedHero: {
-        id: 111,
-        firstName: '...',
-        lastName: '...',
-        description: '...',
-      },
+      selectedHero: undefined,
       heroes: [
         {
           id: 10,
