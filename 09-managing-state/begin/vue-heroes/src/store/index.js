@@ -20,7 +20,9 @@ const actions = {
     commit(GET_HEROES, heroes); // first parameter is the mutation
   },
 };
-const getters = {};
+const getters = {
+  getHeroById: state => id => state.heroes.find(h => h.id === id),
+};
 
 export default new Vuex.Store({
   state,
